@@ -1,0 +1,31 @@
+server:
+  port: ${SERVER_PORT}
+spring:
+  netty:
+    threads:
+      max: 10
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${HOST_URL:jdbc:sqlserver}
+    username: ${${USERNAME_KEY_NAME}}
+    password: ${${PASSWORD_KEY_NAME}}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+application:
+  retrofit:
+    client:
+      callTimeout: ${CALL_TIMEOUT:2}
+      connectTimeout: ${CONNECT_TIMEOUT:20}
+      readTimeout: ${READ_TIMEOUT:15}
+      writeTimeout: ${WRITE_TIMEOUT:15}
+  request:
+    mappings: /api/services
+  secrets-token:
+    value: ${TOKEN_SECRETS}
+    expiration: 900000
+springdoc:
+  api-docs.path: /api-docs
+  # Specify the path of the Swagger UI
+  swagger-ui.path: /swagger-ui.html
