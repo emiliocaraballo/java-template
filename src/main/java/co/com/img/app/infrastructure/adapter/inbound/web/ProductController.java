@@ -1,10 +1,10 @@
-package co.com.img.app.infrastructure.adapter.in.web;
+package co.com.img.app.infrastructure.adapter.inbound.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import co.com.img.app.application.interfaces.ProductServicePort;
+import co.com.img.app.application.interfaces.ProductService;
 import co.com.img.app.domain.model.Product;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,11 +19,10 @@ import java.util.List;
 @Slf4j
 public class ProductController {
 
-    private final ProductServicePort productService;
+    private final ProductService productService;
 
     @GetMapping()
     public Flux<Product> listProducts() {
-        log.info("Iniciando lista de productos");
         List<Product> products = productService.listProducts();
         return Flux.fromIterable(products);
     }

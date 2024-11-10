@@ -1,7 +1,8 @@
 package co.com.img.app.application.usecase.product;
 
 import co.com.img.app.domain.model.Product;
-import co.com.img.app.domain.interfaces.ProductRepositoryPort;
+import co.com.img.app.domain.ports.inound.ListProductsUseCase;
+import co.com.img.app.domain.ports.outbound.ProductRepositoryPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -12,10 +13,11 @@ import java.util.List;
 @Service
 @Slf4j
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
-public class ListProductsUseCase {
+public class ListProductsUseCaseImpl implements ListProductsUseCase {
 
     private final ProductRepositoryPort productRepositoryPort;
 
+    @Override
     public List<Product> execute() {
         return productRepositoryPort.findAll();
     }

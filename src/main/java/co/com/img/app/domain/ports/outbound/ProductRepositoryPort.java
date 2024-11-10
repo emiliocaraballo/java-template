@@ -1,4 +1,4 @@
-package co.com.img.app.domain.interfaces;
+package co.com.img.app.domain.ports.outbound;
 
 import co.com.img.app.domain.model.Product;
 import java.util.List;

@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import co.com.img.app.domain.model.Product;
 
-public interface ProductServicePort {
+public interface ProductService {
 
     public Product create(Product product);
 

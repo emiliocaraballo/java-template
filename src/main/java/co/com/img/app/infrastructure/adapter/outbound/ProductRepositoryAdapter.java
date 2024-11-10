@@ -1,10 +1,10 @@
-package co.com.img.app.infrastructure.adapter.out;
+package co.com.img.app.infrastructure.adapter.outbound;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import co.com.img.app.domain.model.Product;
-import co.com.img.app.domain.interfaces.ProductRepositoryPort;
+import co.com.img.app.domain.ports.outbound.ProductRepositoryPort;
 import co.com.img.app.infrastructure.persistence.entity.ProductEntity;
 import co.com.img.app.infrastructure.persistence.repository.ProductRepositoryJpa;
 import lombok.RequiredArgsConstructor;
