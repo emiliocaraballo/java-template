@@ -141,8 +141,6 @@ domain
 ## 📂 **3. infrastructure**
 > **Propósito**: Contiene los adaptadores de entrada y salida, configuración, seguridad y elementos compartidos.
 
----
-
 ### 📂 **3.1 inadapter**
 > **Responsabilidad**: Puntos de entrada al sistema (API REST, eventos, CLI, gRPC, etc.).
 
