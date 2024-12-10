@@ -180,6 +180,45 @@ inadapter
 - **messaging**: Comunicación con colas de mensajes.
 - **file**: Almacenamiento de archivos (S3, Azure Blob).
 
+**Ejemplo de Estructura:**
+```
+outadapter
+ ├── api
+      ├── ProductController.java
+ ├── persistence
+      ├── adapter
+            ├── ProductJpaAdapter.java
+      ├── repository
+            ├── ProductJpaRepository.java
+      ├── entity
+            ├── ProductEntity.java
+      └── mapper
+            ├── ProductMapper.java  
+ ├── api
+      ├── providerA
+            ├── adapter
+                  ├── ProductClientAdapter.java
+            ├── config
+                  ├── RetrofitConfig.java
+            ├── definition
+                  ├── ServiceCallProductApiSoap.java
+            ├── call
+                  ├── CallProductServicesHttp.java
+ ├── messaging
+      ├── adapter
+            ├── ProductMessageAdapter.java
+      ├── producer
+            ├── ProductMessageProducer.java
+      └── mapper
+            ├── ProductMessageMapper.java
+ ├── file
+      ├── adapter
+            ├── ProductFileAdapter.java
+      ├── storage
+            ├── ProductFileStorage.java
+      └── mapper
+            ├── ProductFileMapper.java
+```
 
 ---
 
@@ -189,16 +228,13 @@ inadapter
 **Archivos:**
 - **SwaggerConfig.java**: Configura Swagger.
 
----
-
-
-## 📂 **4. shared**
-> **Responsabilidad**: Contiene clases reutilizables y excepciones globales.
-
-**Subcarpetas:**
-- **exception**: Excepciones globales reutilizables.
-  - **Ejemplo de archivo**: `GlobalException.java`
-  - **Qué hace**: Excepciones generales de la aplicación.
+**Ejemplo de Estructura:**
+```
+configuration
+ └── SwaggerConfig.java
+ └── LoggingConfig.java
+ └── Etc...
+```
 
 ---
 
