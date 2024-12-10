@@ -15,7 +15,7 @@ src
          └── com.example.miapp
              ├── application
              │    ├── bussiness
-             │    │     ├──  impl
+             │    │     ├── impl
              │    │     │     ├── ProductImpl.java
              │    │     └── interface
              │    │           ├── ProductBussiness.java
@@ -39,11 +39,11 @@ src
              │
              └── infrastructure
                   ├── inadapter
-                  │    ├── controller // API REST
+                  │    ├── controller
                   │    │       ├── ProductController.java
-                  │    ├── websocket // Maneja la comunicación en tiempo real
+                  │    ├── websocket
                   │    │       ├── ProductWebSocketHandler.java
-                  │    └── scheduled // Tareas programadas
+                  │    └── scheduled
                   │          ├── ProductScheduledTask.java
                   │
                   ├── outadapter
@@ -58,15 +58,15 @@ src
                   │    │          ├── ProductMapper.java
                   │    │
                   │    ├── api
-                  │    │    ├── providerA  // Nombre de proveedor de WS externo(s)
+                  │    │    ├── providerA
                   │    │         ├── adapter
-                  │    │         │     ├── ProductClientAdapter.java // pasar a DTO de la aplicación o modelo de dominio
+                  │    │         │     ├── ProductClientAdapter.java
                   │    │         ├── config
-                  │    │         │     ├── RetrofitConfig.java // Configuración de la librería Retrofit para la llamada a la API
+                  │    │         │     ├── RetrofitConfig.java
                   │    │         ├── definition
-                  │    │         │     ├── ServiceCallProductApiSoap.java // Definición del llamado a la API de entrada y salida.
+                  │    │         │     ├── ServiceCallProductApiSoap.java
                   │    │         ├── call
-                  │    │         │     ├── CallProductServicesHttp.java // Ejecución de la api.
+                  │    │         │     ├── CallProductServicesHttp.java
                   ├── configuration
                   │    └── SwaggerConfig.java
                   │
@@ -82,9 +82,11 @@ src
 
 **Subcarpetas:**
 - **usecase**: Contiene los casos de uso que orquestan la lógica de negocio.
+- **bussiness**: Contiene los casos de uso y la funcionalidades adicionales para mejor reutilizacion de casos de uso y tema de seguridad.
+  - **impl**: Logica de negocio de la aplicación.
+  - **interface**:  Definición de interfaces de negocio.
 - **dto**: Objetos de transferencia de datos que se utilizan para enviar y recibir información.
 - **exception**: Excepciones de la **lógica de aplicación**, como validaciones de entrada o errores de acceso.
-
 **Ejemplos de Excepciones:**
 - **InvalidInputException**
 - **UnauthorizedAccessException**
@@ -92,6 +94,11 @@ src
 **Ejemplo de Estructura:**
 ```
 application
+ ├── bussiness
+ │    ├── impl
+ │    │     ├── ProductImpl.java
+ │    └── interface
+ │          ├── ProductBussiness.java
  ├── usecase
       ├── CreateProductUseCase.java
  ├── dto
@@ -154,6 +161,46 @@ inadapter
  └── scheduled
       ├── ProductScheduledTask.java
 ```
+
+---
+
+### 📂 **3.2 outadapter**
+> **Responsabilidad**: Adaptadores para persistencia, API externas, colas de mensajes y sistemas de archivos.
+
+**Subcarpetas:**
+- **persistence**: Interactúa con la base de datos.
+  - **adapter**: Implementa los puertos de salida de persistencia.
+  - **repository**: Interfaz JPA para acceso a la base de datos.
+  - **entity**: Entidades JPA.
+  - **mapper**: Convierte entidades JPA a objetos de dominio.
+- **api**: Interactúa con APIs externas.
+  - **providerA**: Nombre Proveedor de WS externo.
+    - **adapter**: pasar de un Dto externo a un modelo de dominio o DTO de la aplicación.
+    - **config**: Configuración de la librería Retrofit para la llamada a la API
+    - **definition**: Definición del llamado a la API de entrada y salida.
+    - **call**: Ejecución de la api.
+- **messaging**: Comunicación con colas de mensajes.
+- **file**: Almacenamiento de archivos (S3, Azure Blob).
+
+
+---
+
+## 📂 **3.3 configuration**
+> **Responsabilidad**: Configuración general de la aplicación.
+
+**Archivos:**
+- **SwaggerConfig.java**: Configura Swagger.
+
+---
+
+
+## 📂 **4. shared**
+> **Responsabilidad**: Contiene clases reutilizables y excepciones globales.
+
+**Subcarpetas:**
+- **exception**: Excepciones globales reutilizables.
+  - **Ejemplo de archivo**: `GlobalException.java`
+  - **Qué hace**: Excepciones generales de la aplicación.
 
 ---
 
