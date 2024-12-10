@@ -14,54 +14,62 @@ src
      └── java
          └── com.example.miapp
              ├── application
+             │    ├── bussiness
+             │    │     ├──  impl
+             │    │     │     ├── ProductImpl.java
+             │    │     └── interface
+             │    │           ├── ProductBussiness.java
              │    ├── usecase
+             │    │     ├── CreateProductUseCaseImpl.java
              │    ├── dto
+             │    │     ├── CreateProductDto.java
              │    └── exception
+             │          ├── ProductNotFoundException.java
              │
              ├── domain
              │    ├── model
+             │    │     ├── Product.java
              │    ├── port
-             │    │    ├── inbound
-             │    │    └── outbound
+             │    │     ├── inbound
+             │    │     │     ├── CreateProductUseCase.java
+             │    │     └── outbound
+             │    │           ├── ProductRepositoryPort.java
              │    └── exception
+             │          ├── ProductNotFoundException.java
              │
              └── infrastructure
                   ├── inadapter
-                  │    ├── controller
-                  │    ├── eventlistener
-                  │    ├── cli
-                  │    ├── graphql
-                  │    ├── websocket
-                  │    ├── grpc
-                  │    └── scheduled
+                  │    ├── controller // API REST
+                  │    │       ├── ProductController.java
+                  │    ├── websocket // Maneja la comunicación en tiempo real
+                  │    │       ├── ProductWebSocketHandler.java
+                  │    └── scheduled // Tareas programadas
+                  │          ├── ProductScheduledTask.java
                   │
                   ├── outadapter
                   │    ├── persistence
                   │    │    ├── adapter
+                  │    │    │     ├── ProductJpaAdapter.java
                   │    │    ├── repository
+                  │    │    │     ├── ProductJpaRepository.java
                   │    │    ├── entity
+                  │    │    │     ├── ProductEntity.java
                   │    │    └── mapper
+                  │    │          ├── ProductMapper.java
                   │    │
-                  │    ├── client
-                  │    │    ├── adapter
-                  │    │    ├── client
-                  │    │    └── mapper
-                  │    │
-                  │    ├── messaging
-                  │    │    ├── adapter
-                  │    │    ├── producer
-                  │    │    └── mapper
-                  │    │
-                  │    └── file
-                  │         ├── adapter
-                  │         ├── storage
-                  │         └── mapper
-                  │
+                  │    ├── api
+                  │    │    ├── providerA  // Nombre de proveedor de WS externo(s)
+                  │    │         ├── adapter
+                  │    │         │     ├── ProductClientAdapter.java // pasar a DTO de la aplicación o modelo de dominio
+                  │    │         ├── config
+                  │    │         │     ├── RetrofitConfig.java // Configuración de la librería Retrofit para la llamada a la API
+                  │    │         ├── definition
+                  │    │         │     ├── ServiceCallProductApiSoap.java // Definición del llamado a la API de entrada y salida.
+                  │    │         ├── call
+                  │    │         │     ├── CallProductServicesHttp.java // Ejecución de la api.
                   ├── configuration
-                  │    └── ApplicationProperties.java
+                  │    └── SwaggerConfig.java
                   │
-                  ├── security
-                  │    └── SecurityConfig.java
                   │
                   └── shared
                       └── exception
