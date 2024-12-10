@@ -85,8 +85,11 @@ src
 ```
 application
  ├── usecase
+      ├── CreateProductUseCase.java
  ├── dto
+      ├── CreateProductDto.java
  └── exception
+      ├── ProductNotFoundException.java
 ```
 ---
 
@@ -108,10 +111,14 @@ application
 ```
 domain
  ├── model
+      ├── Product.java
  ├── port
  │    ├── inbound
+            ├── CreateProductUseCase.java
  │    └── outbound
+            ├── ProductRepositoryPort.java
  └── exception
+      ├── ProductNotFoundException.java
 ```
 
 ---
@@ -126,23 +133,18 @@ domain
 
 **Subcarpetas:**
 - **controller**: API REST.
-- **eventlistener**: Procesa eventos externos de Kafka, RabbitMQ, etc.
-- **cli**: Ejecuta comandos desde la consola.
-- **graphql**: Resuelve consultas y mutaciones de GraphQL.
 - **websocket**: Maneja la comunicación **en tiempo real**.
-- **grpc**: Define servicios gRPC.
 - **scheduled**: Define tareas **cron programadas**.
 
 **Ejemplo de Estructura:**
 ```
 inadapter
  ├── controller
- ├── eventlistener
- ├── cli
- ├── graphql
+      ├── ProductController.java
  ├── websocket
- ├── grpc
+      ├── ProductWebSocketHandler.java
  └── scheduled
+      ├── ProductScheduledTask.java
 ```
 
 ---
